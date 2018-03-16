@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calc</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function() {
+           //btn numbers 
+           $('#btn0').click(btn0);
+           $('#btn1').click(btn1);
+
+           //btn arithmetic
+           $('#btnAdd').click(btnAdd);
+
+           //clear
+           $('#clear').click(clear);
+
+           //equal
+           $('#btnEqual').click(btnEqual);
+        });
+
+        /*
+        * btn numbers
+        */
+        function btn0() {
+            var num = parseInt($('.num').html());
+            if(num==0) {
+                 $('.num').html('0');
+            } else {
+                $('.num').append('0');
+            }
+            
+        }
+        function btn1() {
+            var num = parseInt($('.num').html());
+            var sign = $('.sign').html();
+
+            if(num==0) {
+                 $('.num').html('1');
+            } else {
+                $('.num').append('1');
+            }
+        }
+
+        function clear() {
+            $('.num').html('0');
+            $('.prenum').html('0');
+            $('.prenum-txt').html('0');
+        }
+
+        /*
+        * btn arithmetic 
+        */
+        function btnAdd() {
+            var num = parseInt($('.num').html());
+            var prenum = parseInt($('.prenum').html());
+            $('.prenum-txt').html(num + ' + ');
+            $('.prenum').html(num);
+            $('.sign').html('+');
+            $('.num').html('0');
+        }
+
+        function btnEqual() {
+            var num = parseInt($('.num').html());
+            var prenum = parseInt($('.prenum').html());
+            var sign = $('.sign').html();
+
+            if(sign=="+")
+                $('.num').html(prenum + num);
+        }
+
+       
+    </script>
+    <style type="text/css">
+        .calc {margin:15px;}
+        .calc .num {border:1px solid gray;padding:10px;margin:10px;width:200px;text-align:right;}
+        .calc .prenum-txt{border:1px solid silver;padding:10px;margin:10px;width:200px;text-align:right;}
+        .sign, .prenum {display:none;}
+    </style>
+</head>
+
+<body>
+    <div class="calc">
+        <div class="sign"></div>
+        <div class="prenum"></div>
+        <div class="prenum-txt"></div>
+        <div class="num">0</div>
+        <button id="btn7">7</button>
+        <button id="btn8">8</button>
+        <button id="btn9">9</button>
+        <button id="btnDivide">/</button>
+        <br>
+        <button id="btn4">4</button>
+        <button id="btn5">5</button>
+        <button id="btn6">6</button>
+        <button id="btnMultiply">x</button><br>
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <button id="btn3">3</button>
+        <button id="btnSubtract">-</button><br>
+        <button id="btn0">0</button>
+        <button id="btnEqual">=</button>
+        <button id="btn">.</button>
+        <button id="btnAdd">+</button><br>
+        <button id="clear">clear</button>
+    </div>
+    <h3>Abandoned</h3>
+</body>
+
+</html>
